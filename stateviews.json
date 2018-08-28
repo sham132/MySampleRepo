@@ -1,0 +1,244 @@
+{
+    "/": {
+        "name": "top",
+        "data": {
+            "grid1": [
+                {
+                    "CityName": "Islamabad",
+                    "CityLat": 25.06,
+                    "CityLong": 5956
+                }
+            ],
+            "grid2": [
+                {
+                    "CityName": "Lahore",
+                    "CityLat": 85,
+                    "CityLong": 23
+                }
+            ]
+        },
+        "url": "/",
+        "template": {
+            "node": "root",
+            "child": [
+                {
+                    "node": "element",
+                    "tag": "div",
+                    "attr": {
+                        "class": "container-fluid",
+                        "ui-view": "top"
+                    }
+                }
+            ]
+        },
+        "resolve": {
+            "ApiMetaData": {
+                "Accounts": {
+                    "operationId": "LS_cities",
+                    "resolved": true,
+                    "responsePath": ".rows",
+                    "inputParams": {}
+                }
+            },
+            "functions": {},
+            "componentMetaData": {
+                "cityGrid": {
+                    "component": "uiGridComponent",
+                    "guiDevMenuEntry": "Edit uiGrid (cityGrid)",
+                    "guiDevId": "1d8298cc-1e45-414d-9fd9-44c83256cf84",
+                    "guiDevWizard": "uiGridWizard",
+                    "enableSorting": true,
+                    "paginationPageSizes": [
+                        10,
+                        20,
+                        50,
+                        100
+                    ],
+                    "paginationPageSize": 10,
+                    "enableScrollbars": true,
+                    "enableFiltering": true,
+                    "enableRowHeaderSelection": false,
+                    "data": null,
+                    "columnDefs": [
+                        {
+                            "name": "CityName",
+                            "displayName": "City Name",
+                            "enableCellEdit": true
+                        },
+                        {
+                            "name": "CityLat",
+                            "displayName": "City Latitide",
+                            "enableCellEdit": false
+                        },
+                        {
+                            "name": "CityLong",
+                            "displayName": "City Longitude",
+                            "enableCellEdit": false
+                        }
+                    ]
+                }
+            }
+        },
+        "guiViews": {
+            "top@top": {
+                "bindings": {
+                    "data": "grid1",
+                    "metaData": "cityGrid"
+                },
+                "component": "uiGridComponent"
+            }
+        },
+        "params": {}
+    },
+    "/home": {
+        "name": "top.gui.home",
+        "url": "home",
+        "resolve": {
+            "ApiMetaData": {},
+            "functions": {},
+            "componentMetaData": {
+                "testform": {
+                    "component": "formComponent",
+                    "guiDevMenuEntry": "Edit form (testform)",
+                    "guiDevId": "1d8298cc-1e45-414d-9fd9-44c83256cf89",
+                    "guiDevWizard": "formWizard",
+                    "heading": "Test Form",
+                    "elementsPerRow": 3,
+                    "parameters": [
+                        {
+                            "ctype": "text",
+                            "label": "Name",
+                            "name": "name",
+                            "guiDevId": "1d8298cc-1e45-414d-9fd9-44c83256cf90",
+                            "guiDevMenuEntry": "Edit Form Parameter ('name')",
+                            "guiDevWizard": "formParameterWizard"
+                        },
+                        {
+                            "ctype": "text",
+                            "label": "Age",
+                            "name": "age",
+                            "guiDevId": "1d8298cc-1e45-414d-9fd9-44c83256cf91",
+                            "guiDevMenuEntry": "Edit Form Parameter (age)",
+                            "guiDevWizard": "formParameterWizard"
+                        },
+                        {
+                            "ctype": "text",
+                            "label": "DoB",
+                            "name": "dob",
+                            "guiDevId": "1d8298cc-1e45-414d-9fd9-44c83256cf92",
+                            "guiDevMenuEntry": "Edit Form Parameter (dob)",
+                            "guiDevWizard": "formParameterWizard"
+                        },
+                        {
+                            "ctype": "text",
+                            "label": "CoB",
+                            "name": "cob",
+                            "guiDevId": "1d8298cc-1e45-414d-9fd9-44c83256cf93",
+                            "guiDevMenuEntry": "Edit Form Parameter (cob)",
+                            "guiDevWizard": "formParameterWizard"
+                        },
+                        {
+                            "ctype": "text",
+                            "label": "Current City",
+                            "name": "currentCity",
+                            "guiDevId": "1d8298cc-1e45-414d-9fd9-44c83256cf94",
+                            "guiDevMenuEntry": "Edit Form Parameter (currentCity)",
+                            "guiDevWizard": "formParameterWizard"
+                        }
+                    ]
+                }
+            }
+        },
+        "guiViews": {
+            "top@top": {
+                "component": "formComponent",
+                "bindings": {
+                    "metaData": "testform"
+                }
+            }
+        }
+    },
+    "/test": {
+        "url": "test",
+        "params": {},
+        "data": {},
+        "resolve": {
+            "componentMetaData": {},
+            "ApiMetaData": {},
+            "functions": {
+                "hello": {
+                    "returnVariable": "x",
+                    "prepend": "[\"dataService\", \"$state\", \"$state$\", \"$stateParams\", async (dataService, $state, $state$, $stateParams) => {\nlet grid1 = $state$.data[\"grid1\"];\nlet grid2 = $state$.data[\"grid2\"];\n",
+                    "code": "/* Write your code here */\nlet x = grid1.concat(grid2);",
+                    "append": "\n$state$.data[\"hello\"] = x; \nreturn x;"
+                }
+            }
+        },
+        "name": "top.gui.test",
+        "guiViews": {
+            "top@top": {
+                "bindings": {
+                    "data": "hello",
+                    "metaData": "cityGrid"
+                },
+                "component": "uiGridComponent"
+            }
+        }
+    },
+    "/home/new": {
+        "url": "/new",
+        "params": {},
+        "data": {},
+        "resolve": {
+            "componentMetaData": {},
+            "ApiMetaData": {},
+            "functions": {}
+        },
+        "name": "top.gui.home.gui.new",
+        "guiViews": {
+            "left@top.gui.home.gui.new": {
+                "bindings": {
+                    "data": "",
+                    "metaData": "testform"
+                },
+                "component": "formComponent"
+            },
+            "right@top.gui.home.gui.new": {
+                "bindings": {
+                    "data": "grid2",
+                    "metaData": "cityGrid"
+                },
+                "component": "uiGridComponent"
+            }
+        },
+        "absViews": {
+            "top@top": {
+                "template": {
+                    "node": "root",
+                    "child": [
+                        {
+                            "node": "element",
+                            "tag": "div",
+                            "attr": {
+                                "ui-view": "left",
+                                "class": "col-md-3"
+                            }
+                        },
+                        {
+                            "node": "text",
+                            "text": "\n"
+                        },
+                        {
+                            "node": "element",
+                            "tag": "div",
+                            "attr": {
+                                "ui-view": "right",
+                                "class": "col-md-9"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
